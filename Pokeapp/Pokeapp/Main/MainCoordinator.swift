@@ -18,6 +18,13 @@ class MainCoordinator {
     
     func start(){
         let vc = MainViewController()
+        vc.delegate = self
         navigationController.pushViewController(vc, animated: true)
+    }
+}
+
+extension MainCoordinator: MainViewControllerDelegate {
+    func onPokemonDidTap(){
+        
     }
 }

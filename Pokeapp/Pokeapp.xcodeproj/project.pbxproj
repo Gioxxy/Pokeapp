@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F766C85B25B6DB5D0046FFA5 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F766C85A25B6DB5D0046FFA5 /* Colors.swift */; };
 		F76CC36025B6C58100C2A551 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76CC35F25B6C58100C2A551 /* AppDelegate.swift */; };
 		F76CC36425B6C58100C2A551 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76CC36325B6C58100C2A551 /* MainViewController.swift */; };
 		F76CC36925B6C58300C2A551 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F76CC36825B6C58300C2A551 /* Assets.xcassets */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F766C85A25B6DB5D0046FFA5 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		F76CC35C25B6C58100C2A551 /* Pokeapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokeapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F76CC35F25B6C58100C2A551 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F76CC36325B6C58100C2A551 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +76,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F766C85625B6DA070046FFA5 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				F76CC3A025B6C96F00C2A551 /* MainCoordinator.swift */,
+				F76CC36325B6C58100C2A551 /* MainViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		F76CC35325B6C58100C2A551 = {
 			isa = PBXGroup;
 			children = (
@@ -98,11 +109,11 @@
 			isa = PBXGroup;
 			children = (
 				F76CC35F25B6C58100C2A551 /* AppDelegate.swift */,
-				F76CC36325B6C58100C2A551 /* MainViewController.swift */,
 				F76CC36825B6C58300C2A551 /* Assets.xcassets */,
 				F76CC36A25B6C58300C2A551 /* LaunchScreen.storyboard */,
 				F76CC36D25B6C58300C2A551 /* Info.plist */,
-				F76CC3A025B6C96F00C2A551 /* MainCoordinator.swift */,
+				F766C85625B6DA070046FFA5 /* Main */,
+				F766C85A25B6DB5D0046FFA5 /* Colors.swift */,
 			);
 			path = Pokeapp;
 			sourceTree = "<group>";
@@ -255,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F76CC36425B6C58100C2A551 /* MainViewController.swift in Sources */,
+				F766C85B25B6DB5D0046FFA5 /* Colors.swift in Sources */,
 				F76CC3A125B6C96F00C2A551 /* MainCoordinator.swift in Sources */,
 				F76CC36025B6C58100C2A551 /* AppDelegate.swift in Sources */,
 			);
