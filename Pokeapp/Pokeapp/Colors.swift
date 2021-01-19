@@ -9,6 +9,6 @@ import Foundation
 import UIKit
 
 extension UIColor {
-    static let primary = #colorLiteral(red: 0.231372549, green: 0.2980392157, blue: 0.7921568627, alpha: 1)
-    static let accent = #colorLiteral(red: 1, green: 0.8705882353, blue: 0, alpha: 1)
+    static let background = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+    static let accent = #colorLiteral(red: 0, green: 0.831372549, blue: 0.6823529412, alpha: 1)
 }

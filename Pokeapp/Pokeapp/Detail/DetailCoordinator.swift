@@ -1,5 +1,5 @@
 //
-//  MainCoordinator.swift
+//  DetailCoordinator.swift
 //  Pokeapp
 //
 //  Created by Gionatan Cernusco on 19/01/21.
@@ -8,8 +8,7 @@
 import Foundation
 import UIKit
 
-class MainCoordinator {
-    
+class DetailCoordinator {
     var navigationController: UINavigationController
     
     init(navigationController: UINavigationController){
@@ -17,14 +16,14 @@ class MainCoordinator {
     }
     
     func start(){
-        let vc = MainViewController()
+        let vc = DetailViewController()
         vc.delegate = self
         navigationController.pushViewController(vc, animated: true)
     }
 }
 
-extension MainCoordinator: MainViewControllerDelegate {
-    func onPokemonDidTap(){
-        DetailCoordinator(navigationController: navigationController).start()
+extension DetailCoordinator: DetailViewControllerDelegate {
+    func onBackDidTap() {
+        navigationController.popViewController(animated: true)
     }
 }
