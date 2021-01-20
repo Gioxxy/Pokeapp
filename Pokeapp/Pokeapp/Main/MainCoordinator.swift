@@ -11,6 +11,7 @@ import UIKit
 class MainCoordinator {
     
     var navigationController: UINavigationController
+    let manager = MainManager()
     
     init(navigationController: UINavigationController){
         self.navigationController = navigationController
@@ -19,11 +20,23 @@ class MainCoordinator {
     func start(){
         let vc = MainViewController()
         vc.delegate = self
-        navigationController.pushViewController(vc, animated: true)
+        self.navigationController.pushViewController(vc, animated: true)
     }
 }
 
 extension MainCoordinator: MainViewControllerDelegate {
+    func fetchData(offset: Int, onSuccess: ((MainViewModel) -> Void)?, onError: (() -> Void)?) {
+        manager.getPokemons(
+            offset: offset,
+            onSuccess: { mainViewModel in
+                onSuccess?(mainViewModel)
+            },
+            onError: {
+                onError?()
+            }
+        )
+    }
+    
     func onPokemonDidTap(){
         DetailCoordinator(navigationController: navigationController).start()
     }

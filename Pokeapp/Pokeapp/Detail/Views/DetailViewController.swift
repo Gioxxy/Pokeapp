@@ -13,7 +13,9 @@ protocol DetailViewControllerDelegate: class {
 
 class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
     
-    var delegate: DetailViewControllerDelegate?
+    var delegate: DetailViewControllerDelegate? // TODO Sould be weak
+    let statsTableView = StatsTableView()
+    let typesCollectionView = TypeCollectionView()
     
     
     override func viewDidLoad() {
@@ -61,7 +63,7 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
         title.text = "Bulbasaur"
         title.textColor = UIColor.white
         title.font = UIFont(name: "AvenirNext-Bold", size: 40)
-        title.textAlignment = .center
+        title.textAlignment = .left
         view.addSubview(title)
         title.sizeToFit()
         
@@ -69,8 +71,23 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
         NSLayoutConstraint.activate([
             title.topAnchor.constraint(equalTo: arrowBack.bottomAnchor, constant: 10),
             title.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 18),
+            title.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 18)
         ])
         
+        // Add id
+        let id = UILabel()
+        id.text = "#001"
+        id.textColor = UIColor.white
+        id.font = UIFont(name: "AvenirNext-Bold", size: 20)
+        id.textAlignment = .left
+        view.addSubview(id)
+        id.sizeToFit()
+        
+        id.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            id.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 5),
+            id.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 18)
+        ])
         
         // Add container
         let container = UIView()
@@ -81,12 +98,14 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
         container.layer.shadowRadius = 3
         container.layer.shadowOpacity = 0.2
         container.layer.masksToBounds = false
+        container.layer.shadowPath = UIBezierPath(roundedRect: container.bounds, cornerRadius: container.layer.cornerRadius).cgPath
         view.addSubview(container)
         
+        let bottomInset: CGFloat = UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0 > 0 ? 0 : -18
         container.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             container.topAnchor.constraint(equalTo: view.centerYAnchor, constant: -50),
-            container.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
+            container.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: bottomInset),
             container.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -18),
             container.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 18)
         ])
@@ -109,25 +128,24 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
             image.widthAnchor.constraint(equalToConstant: 200),
         ])
         
-        // Add stats
-        let statsTableView = UITableView()
-        statsTableView.delegate = self
-        statsTableView.dataSource = self
-        statsTableView.register(StatTableViewCell.self, forCellReuseIdentifier: StatTableViewCell.cellId)
-        statsTableView.showsVerticalScrollIndicator = false
-        statsTableView.showsHorizontalScrollIndicator = false
-        statsTableView.backgroundColor = UIColor.clear.withAlphaComponent(0)
-        statsTableView.separatorStyle = .none
-        statsTableView.allowsSelection = false
-        statsTableView.rowHeight = 35
-        
-        container.addSubview(statsTableView)
-        statsTableView.translatesAutoresizingMaskIntoConstraints = false
+        // Add types
+        container.addSubview(typesCollectionView.collectionView)
+        typesCollectionView.collectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            statsTableView.topAnchor.constraint(equalTo: image.bottomAnchor, constant: 10),
-            statsTableView.bottomAnchor.constraint(equalTo: container.bottomAnchor),
-            statsTableView.leadingAnchor.constraint(equalTo: container.leadingAnchor),
-            statsTableView.trailingAnchor.constraint(equalTo: container.trailingAnchor)
+            typesCollectionView.collectionView.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -10),
+            typesCollectionView.collectionView.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+            typesCollectionView.collectionView.trailingAnchor.constraint(equalTo: container.trailingAnchor),
+            typesCollectionView.collectionView.heightAnchor.constraint(equalToConstant: 60)
+        ])
+        
+        // Add stats
+        container.addSubview(statsTableView.tableView)
+        statsTableView.tableView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            statsTableView.tableView.topAnchor.constraint(equalTo: image.bottomAnchor, constant: 10),
+            statsTableView.tableView.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+            statsTableView.tableView.trailingAnchor.constraint(equalTo: container.trailingAnchor),
+            statsTableView.tableView.bottomAnchor.constraint(equalTo: typesCollectionView.collectionView.topAnchor)
         ])
         
         
@@ -136,16 +154,4 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
     @objc private func onBackTap(sender: UIButton!){
         delegate?.onBackDidTap()
     }
-}
-
-extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        7
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: StatTableViewCell.cellId, for: indexPath) as! StatTableViewCell
-        return cell
-    }
-    
 }

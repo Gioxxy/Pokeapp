@@ -22,7 +22,7 @@ class StatTableViewCell: UITableViewCell {
     
     private func setupView(){
         
-        //Add title
+        // Add title
         let title = UILabel()
         title.text = "HP"
         title.textColor = UIColor.gray
@@ -34,7 +34,7 @@ class StatTableViewCell: UITableViewCell {
         title.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             title.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            title.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25)
+            title.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 35)
         ])
         
         // Add value
@@ -52,6 +52,7 @@ class StatTableViewCell: UITableViewCell {
             value.leadingAnchor.constraint(equalTo: contentView.centerXAnchor, constant: -80)
         ])
         
+        // Add progress
         let progress = UIProgressView()
         progress.progressTintColor = UIColor.black
         progress.setProgress(0.45, animated: true)
@@ -61,7 +62,7 @@ class StatTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             progress.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             progress.leadingAnchor.constraint(equalTo: value.trailingAnchor, constant: 20),
-            progress.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
+            progress.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
         ])
     }
 }

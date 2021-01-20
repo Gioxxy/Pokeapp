@@ -12,6 +12,15 @@
 		F766C8A525B72D540046FFA5 /* DetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F766C8A425B72D540046FFA5 /* DetailCoordinator.swift */; };
 		F766C8B325B72EE10046FFA5 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F766C8B225B72EE10046FFA5 /* DetailViewController.swift */; };
 		F766C8B825B74DBD0046FFA5 /* StatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F766C8B725B74DBD0046FFA5 /* StatTableViewCell.swift */; };
+		F766C8C025B822760046FFA5 /* TypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F766C8BF25B822760046FFA5 /* TypeCollectionViewCell.swift */; };
+		F766C8C525B824500046FFA5 /* StatsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F766C8C425B824500046FFA5 /* StatsTableView.swift */; };
+		F766C8CA25B8272B0046FFA5 /* TypeCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F766C8C925B8272B0046FFA5 /* TypeCollectionView.swift */; };
+		F766C8E325B8481D0046FFA5 /* PokeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F766C8E225B8481D0046FFA5 /* PokeAPI.swift */; };
+		F766C8EB25B852860046FFA5 /* MainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F766C8EA25B852860046FFA5 /* MainManager.swift */; };
+		F766C8F025B852CB0046FFA5 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F766C8EF25B852CB0046FFA5 /* MainModel.swift */; };
+		F766C8F825B8541C0046FFA5 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F766C8F725B8541C0046FFA5 /* MainViewModel.swift */; };
+		F766C90025B864960046FFA5 /* PokemonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F766C8FF25B864960046FFA5 /* PokemonModel.swift */; };
+		F766C90525B867850046FFA5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F766C90425B867850046FFA5 /* Extensions.swift */; };
 		F76CC36025B6C58100C2A551 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76CC35F25B6C58100C2A551 /* AppDelegate.swift */; };
 		F76CC36425B6C58100C2A551 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76CC36325B6C58100C2A551 /* MainViewController.swift */; };
 		F76CC36925B6C58300C2A551 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F76CC36825B6C58300C2A551 /* Assets.xcassets */; };
@@ -44,6 +53,15 @@
 		F766C8A425B72D540046FFA5 /* DetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCoordinator.swift; sourceTree = "<group>"; };
 		F766C8B225B72EE10046FFA5 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		F766C8B725B74DBD0046FFA5 /* StatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatTableViewCell.swift; sourceTree = "<group>"; };
+		F766C8BF25B822760046FFA5 /* TypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeCollectionViewCell.swift; sourceTree = "<group>"; };
+		F766C8C425B824500046FFA5 /* StatsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsTableView.swift; sourceTree = "<group>"; };
+		F766C8C925B8272B0046FFA5 /* TypeCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeCollectionView.swift; sourceTree = "<group>"; };
+		F766C8E225B8481D0046FFA5 /* PokeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeAPI.swift; sourceTree = "<group>"; };
+		F766C8EA25B852860046FFA5 /* MainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainManager.swift; sourceTree = "<group>"; };
+		F766C8EF25B852CB0046FFA5 /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
+		F766C8F725B8541C0046FFA5 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		F766C8FF25B864960046FFA5 /* PokemonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonModel.swift; sourceTree = "<group>"; };
+		F766C90425B867850046FFA5 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		F76CC35C25B6C58100C2A551 /* Pokeapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokeapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F76CC35F25B6C58100C2A551 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F76CC36325B6C58100C2A551 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -87,9 +105,12 @@
 		F766C85625B6DA070046FFA5 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				F766C8FF25B864960046FFA5 /* PokemonModel.swift */,
+				F766C8EF25B852CB0046FFA5 /* MainModel.swift */,
+				F766C8F725B8541C0046FFA5 /* MainViewModel.swift */,
+				F766C8E025B8453F0046FFA5 /* Views */,
 				F76CC3A025B6C96F00C2A551 /* MainCoordinator.swift */,
-				F76CC36325B6C58100C2A551 /* MainViewController.swift */,
-				F766C86A25B6DD330046FFA5 /* MainCollectionViewCell.swift */,
+				F766C8EA25B852860046FFA5 /* MainManager.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -97,11 +118,47 @@
 		F766C8A025B72D210046FFA5 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				F766C8DC25B844D00046FFA5 /* Views */,
 				F766C8A425B72D540046FFA5 /* DetailCoordinator.swift */,
-				F766C8B225B72EE10046FFA5 /* DetailViewController.swift */,
-				F766C8B725B74DBD0046FFA5 /* StatTableViewCell.swift */,
 			);
 			path = Detail;
+			sourceTree = "<group>";
+		};
+		F766C8D725B844870046FFA5 /* Stats */ = {
+			isa = PBXGroup;
+			children = (
+				F766C8C425B824500046FFA5 /* StatsTableView.swift */,
+				F766C8B725B74DBD0046FFA5 /* StatTableViewCell.swift */,
+			);
+			path = Stats;
+			sourceTree = "<group>";
+		};
+		F766C8D825B844940046FFA5 /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				F766C8C925B8272B0046FFA5 /* TypeCollectionView.swift */,
+				F766C8BF25B822760046FFA5 /* TypeCollectionViewCell.swift */,
+			);
+			path = Types;
+			sourceTree = "<group>";
+		};
+		F766C8DC25B844D00046FFA5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F766C8B225B72EE10046FFA5 /* DetailViewController.swift */,
+				F766C8D825B844940046FFA5 /* Types */,
+				F766C8D725B844870046FFA5 /* Stats */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F766C8E025B8453F0046FFA5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F76CC36325B6C58100C2A551 /* MainViewController.swift */,
+				F766C86A25B6DD330046FFA5 /* MainCollectionViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		F76CC35325B6C58100C2A551 = {
@@ -134,6 +191,8 @@
 				F766C85625B6DA070046FFA5 /* Main */,
 				F766C8A025B72D210046FFA5 /* Detail */,
 				F766C85A25B6DB5D0046FFA5 /* Colors.swift */,
+				F766C8E225B8481D0046FFA5 /* PokeAPI.swift */,
+				F766C90425B867850046FFA5 /* Extensions.swift */,
 			);
 			path = Pokeapp;
 			sourceTree = "<group>";
@@ -286,11 +345,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				F76CC36425B6C58100C2A551 /* MainViewController.swift in Sources */,
+				F766C8E325B8481D0046FFA5 /* PokeAPI.swift in Sources */,
+				F766C8C525B824500046FFA5 /* StatsTableView.swift in Sources */,
 				F766C85B25B6DB5D0046FFA5 /* Colors.swift in Sources */,
 				F766C86B25B6DD330046FFA5 /* MainCollectionViewCell.swift in Sources */,
+				F766C8F825B8541C0046FFA5 /* MainViewModel.swift in Sources */,
 				F766C8A525B72D540046FFA5 /* DetailCoordinator.swift in Sources */,
+				F766C90025B864960046FFA5 /* PokemonModel.swift in Sources */,
+				F766C8C025B822760046FFA5 /* TypeCollectionViewCell.swift in Sources */,
 				F76CC3A125B6C96F00C2A551 /* MainCoordinator.swift in Sources */,
 				F766C8B825B74DBD0046FFA5 /* StatTableViewCell.swift in Sources */,
+				F766C8EB25B852860046FFA5 /* MainManager.swift in Sources */,
+				F766C8CA25B8272B0046FFA5 /* TypeCollectionView.swift in Sources */,
+				F766C8F025B852CB0046FFA5 /* MainModel.swift in Sources */,
+				F766C90525B867850046FFA5 /* Extensions.swift in Sources */,
 				F76CC36025B6C58100C2A551 /* AppDelegate.swift in Sources */,
 				F766C8B325B72EE10046FFA5 /* DetailViewController.swift in Sources */,
 			);
