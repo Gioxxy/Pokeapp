@@ -126,7 +126,14 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
                     self.mainViewModel?.nextPageURL = mainViewModel.nextPageURL
                     self.mainViewModel?.nextOffset = mainViewModel.nextOffset
                     self.mainViewModel?.pokemons.append(contentsOf: mainViewModel.pokemons)
-                    self.collectionView.reloadData()
+                    
+                    var paths = [IndexPath]()
+                    for i in 0..<mainViewModel.pokemons.count {
+                        paths.append(IndexPath(row: (self.mainViewModel?.pokemons.count ?? 0) + i, section: 0))
+                    }
+                    self.collectionView.performBatchUpdates {
+                        self.collectionView.insertItems(at: paths)
+                    }
                 },
                 onError: {}
             )
