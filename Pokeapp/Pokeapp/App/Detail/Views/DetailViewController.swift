@@ -59,6 +59,7 @@ final class DetailViewController: UIViewController {
         imageView.layer.shadowRadius = 3
         imageView.layer.shadowOpacity = 0.2
         imageView.layer.masksToBounds = false
+        imageView.isUserInteractionEnabled = true
         return imageView
     }()
     
@@ -70,6 +71,7 @@ final class DetailViewController: UIViewController {
         imageView.imageFromNetwork(url: detailViewModel.imageURL)
         typesCollectionView.config(types: detailViewModel.types)
         statsTableView.config(stats: detailViewModel.stats)
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onImageTap(tapGestureRecognizer:))))
         
         addViews()
     }
@@ -159,5 +161,9 @@ final class DetailViewController: UIViewController {
     
     @objc private func onBackTap(sender: UIButton!){
         detailViewModel?.onBackDidTap()
+    }
+    
+    @objc private func onImageTap(tapGestureRecognizer: UITapGestureRecognizer!){
+        detailViewModel?.onImageDidTap()
     }
 }

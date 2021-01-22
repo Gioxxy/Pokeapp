@@ -9,12 +9,11 @@ import Foundation
 import UIKit
 
 class MainCoordinator {
-    
-    private var navigationController: UINavigationController
+    private var navigationController: SwipeBackNavigationController
     private let manager = MainManager()
     private let mainViewModel: MainViewModel
     
-    init(navigationController: UINavigationController){
+    init(navigationController: SwipeBackNavigationController){
         self.navigationController = navigationController
         mainViewModel = MainViewModel()
     }

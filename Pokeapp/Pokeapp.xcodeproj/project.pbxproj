@@ -31,6 +31,11 @@
 		F76CC38225B6C58300C2A551 /* PokeappUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76CC38125B6C58300C2A551 /* PokeappUITests.swift */; };
 		F76CC3A125B6C96F00C2A551 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76CC3A025B6C96F00C2A551 /* MainCoordinator.swift */; };
 		F7BAAE0725BAE8FD00FE8CE4 /* SwipeBackNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BAAE0625BAE8FD00FE8CE4 /* SwipeBackNavigationController.swift */; };
+		F7BAAE1C25BB0E0800FE8CE4 /* ImageViewerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BAAE1B25BB0E0800FE8CE4 /* ImageViewerCoordinator.swift */; };
+		F7BAAE2425BB0E6C00FE8CE4 /* ImageViewerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BAAE2325BB0E6C00FE8CE4 /* ImageViewerViewModel.swift */; };
+		F7BAAE2925BB140000FE8CE4 /* ImageViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BAAE2825BB140000FE8CE4 /* ImageViewerViewController.swift */; };
+		F7BAAE2E25BB18B100FE8CE4 /* PageViewCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BAAE2D25BB18B100FE8CE4 /* PageViewCollectionView.swift */; };
+		F7BAAE3325BB190A00FE8CE4 /* PageViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BAAE3225BB190A00FE8CE4 /* PageViewCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +86,11 @@
 		F76CC38325B6C58300C2A551 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F76CC3A025B6C96F00C2A551 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		F7BAAE0625BAE8FD00FE8CE4 /* SwipeBackNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeBackNavigationController.swift; sourceTree = "<group>"; };
+		F7BAAE1B25BB0E0800FE8CE4 /* ImageViewerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewerCoordinator.swift; sourceTree = "<group>"; };
+		F7BAAE2325BB0E6C00FE8CE4 /* ImageViewerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewerViewModel.swift; sourceTree = "<group>"; };
+		F7BAAE2825BB140000FE8CE4 /* ImageViewerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewerViewController.swift; sourceTree = "<group>"; };
+		F7BAAE2D25BB18B100FE8CE4 /* PageViewCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewCollectionView.swift; sourceTree = "<group>"; };
+		F7BAAE3225BB190A00FE8CE4 /* PageViewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,7 +180,6 @@
 		F766C90E25B991090046FFA5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F766C8FF25B864960046FFA5 /* PokemonModel.swift */,
 				F766C8EF25B852CB0046FFA5 /* MainModel.swift */,
 			);
 			path = Model;
@@ -274,10 +283,56 @@
 		F7BAAE1525BAF22100FE8CE4 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				F7BAAE4025BB320300FE8CE4 /* Model */,
+				F7BAAE1925BB0DE300FE8CE4 /* ImageViewer */,
 				F766C85625B6DA070046FFA5 /* Main */,
 				F766C8A025B72D210046FFA5 /* Detail */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		F7BAAE1925BB0DE300FE8CE4 /* ImageViewer */ = {
+			isa = PBXGroup;
+			children = (
+				F7BAAE1B25BB0E0800FE8CE4 /* ImageViewerCoordinator.swift */,
+				F7BAAE3725BB310200FE8CE4 /* View */,
+				F7BAAE3F25BB31E100FE8CE4 /* ViewModel */,
+			);
+			path = ImageViewer;
+			sourceTree = "<group>";
+		};
+		F7BAAE3725BB310200FE8CE4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F7BAAE2825BB140000FE8CE4 /* ImageViewerViewController.swift */,
+				F7BAAE3825BB311700FE8CE4 /* PageView */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F7BAAE3825BB311700FE8CE4 /* PageView */ = {
+			isa = PBXGroup;
+			children = (
+				F7BAAE2D25BB18B100FE8CE4 /* PageViewCollectionView.swift */,
+				F7BAAE3225BB190A00FE8CE4 /* PageViewCollectionViewCell.swift */,
+			);
+			path = PageView;
+			sourceTree = "<group>";
+		};
+		F7BAAE3F25BB31E100FE8CE4 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F7BAAE2325BB0E6C00FE8CE4 /* ImageViewerViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F7BAAE4025BB320300FE8CE4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F766C8FF25B864960046FFA5 /* PokemonModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -417,15 +472,20 @@
 				F766C8F825B8541C0046FFA5 /* MainViewModel.swift in Sources */,
 				F766C8A525B72D540046FFA5 /* DetailCoordinator.swift in Sources */,
 				F766C90025B864960046FFA5 /* PokemonModel.swift in Sources */,
+				F7BAAE2425BB0E6C00FE8CE4 /* ImageViewerViewModel.swift in Sources */,
 				F766C8C025B822760046FFA5 /* TypeCollectionViewCell.swift in Sources */,
 				F76CC3A125B6C96F00C2A551 /* MainCoordinator.swift in Sources */,
+				F7BAAE3325BB190A00FE8CE4 /* PageViewCollectionViewCell.swift in Sources */,
 				F766C8B825B74DBD0046FFA5 /* StatTableViewCell.swift in Sources */,
 				F766C8EB25B852860046FFA5 /* MainManager.swift in Sources */,
 				F766C8CA25B8272B0046FFA5 /* TypeCollectionView.swift in Sources */,
+				F7BAAE2E25BB18B100FE8CE4 /* PageViewCollectionView.swift in Sources */,
+				F7BAAE2925BB140000FE8CE4 /* ImageViewerViewController.swift in Sources */,
 				F766C93625B9D7070046FFA5 /* PokemonType.swift in Sources */,
 				F766C90A25B990EB0046FFA5 /* DetailViewModel.swift in Sources */,
 				F7BAAE0725BAE8FD00FE8CE4 /* SwipeBackNavigationController.swift in Sources */,
 				F766C8F025B852CB0046FFA5 /* MainModel.swift in Sources */,
+				F7BAAE1C25BB0E0800FE8CE4 /* ImageViewerCoordinator.swift in Sources */,
 				F766C90525B867850046FFA5 /* Extensions.swift in Sources */,
 				F76CC36025B6C58100C2A551 /* AppDelegate.swift in Sources */,
 				F766C8B325B72EE10046FFA5 /* DetailViewController.swift in Sources */,

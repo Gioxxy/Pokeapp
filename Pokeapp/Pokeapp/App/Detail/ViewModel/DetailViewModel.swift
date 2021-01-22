@@ -14,6 +14,7 @@ protocol DetailViewModelDelegate: class {
 final class DetailViewModel {
     
     var coordinator: DetailCoordinator?
+    private var pokemonModel: PokemonModel
     
     let id: Int
     let name: String
@@ -24,6 +25,7 @@ final class DetailViewModel {
     let types: [PokemonType]
     
     init(pokemonModel: PokemonModel) {
+        self.pokemonModel = pokemonModel
         id = pokemonModel.id
         name = pokemonModel.name.capitalized.replacingOccurrences(of: "-", with: " - ")
         idString = String(format: "#%03d", pokemonModel.id)
@@ -36,6 +38,10 @@ final class DetailViewModel {
     
     func onBackDidTap(){
         coordinator?.onBackDidTap()
+    }
+    
+    func onImageDidTap(){
+        coordinator?.onImageDidTap(pokemonModel: pokemonModel)
     }
 }
 
