@@ -7,7 +7,9 @@
 
 import UIKit
 
-class StatsTableView: UITableViewController {
+final class StatsTableView: UITableViewController {
+    
+    private var stats: [StatsViewModel]?
     
     override func viewDidLoad() {
         tableView.register(StatTableViewCell.self, forCellReuseIdentifier: StatTableViewCell.cellId)
@@ -19,12 +21,21 @@ class StatsTableView: UITableViewController {
         tableView.bounces = false
         tableView.rowHeight = 40
     }
+    
+    func config(stats: [StatsViewModel]){
+        self.stats = stats
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        6
+        stats?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: StatTableViewCell.cellId, for: indexPath) as! StatTableViewCell
-        return cell
+        if let stats = stats {
+            let cell = tableView.dequeueReusableCell(withIdentifier: StatTableViewCell.cellId, for: indexPath) as! StatTableViewCell
+            cell.config(stat: stats[indexPath.row])
+            return cell
+        }
+        return UITableViewCell()
     }
 }

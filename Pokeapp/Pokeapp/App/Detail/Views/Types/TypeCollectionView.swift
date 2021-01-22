@@ -7,7 +7,9 @@
 
 import UIKit
 
-class TypeCollectionView: UICollectionViewController {
+final class TypeCollectionView: UICollectionViewController {
+    
+    private var types: [PokemonType]?
     
     init (){
         let flow = UICollectionViewFlowLayout()
@@ -24,7 +26,6 @@ class TypeCollectionView: UICollectionViewController {
     }
     
     override func viewDidLoad() {
-        
         collectionView.register(TypeCollectionViewCell.self, forCellWithReuseIdentifier: TypeCollectionViewCell.cellId)
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
@@ -32,12 +33,20 @@ class TypeCollectionView: UICollectionViewController {
         collectionView.allowsSelection = false
     }
     
+    func config(types: [PokemonType]){
+        self.types = types
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        2
+        types?.count ?? 0
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TypeCollectionViewCell.cellId, for: indexPath) as! TypeCollectionViewCell
-        return cell
+        if let type = types?[indexPath.row] {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TypeCollectionViewCell.cellId, for: indexPath) as! TypeCollectionViewCell
+            cell.config(type: type)
+            return cell
+        }
+        return UICollectionViewCell()
     }
 }

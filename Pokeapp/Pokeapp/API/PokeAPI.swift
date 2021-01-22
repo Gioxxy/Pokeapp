@@ -26,7 +26,7 @@ class PokeAPI {
         request.addValue("application/json", forHTTPHeaderField: "Accept")
 
         URLSession.shared.dataTask(with: request, completionHandler: { data, response, error -> Void in
-            print("RES " + url.absoluteString)
+//            print("RES " + url.absoluteString)
             if let error = error {
                 print("Network error: " + error.localizedDescription)
                 onError?()

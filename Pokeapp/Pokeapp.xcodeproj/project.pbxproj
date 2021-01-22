@@ -21,6 +21,8 @@
 		F766C8F825B8541C0046FFA5 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F766C8F725B8541C0046FFA5 /* MainViewModel.swift */; };
 		F766C90025B864960046FFA5 /* PokemonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F766C8FF25B864960046FFA5 /* PokemonModel.swift */; };
 		F766C90525B867850046FFA5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F766C90425B867850046FFA5 /* Extensions.swift */; };
+		F766C90A25B990EB0046FFA5 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F766C90925B990EB0046FFA5 /* DetailViewModel.swift */; };
+		F766C93625B9D7070046FFA5 /* PokemonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F766C93525B9D7070046FFA5 /* PokemonType.swift */; };
 		F76CC36025B6C58100C2A551 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76CC35F25B6C58100C2A551 /* AppDelegate.swift */; };
 		F76CC36425B6C58100C2A551 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76CC36325B6C58100C2A551 /* MainViewController.swift */; };
 		F76CC36925B6C58300C2A551 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F76CC36825B6C58300C2A551 /* Assets.xcassets */; };
@@ -28,6 +30,7 @@
 		F76CC37725B6C58300C2A551 /* PokeappTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76CC37625B6C58300C2A551 /* PokeappTests.swift */; };
 		F76CC38225B6C58300C2A551 /* PokeappUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76CC38125B6C58300C2A551 /* PokeappUITests.swift */; };
 		F76CC3A125B6C96F00C2A551 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76CC3A025B6C96F00C2A551 /* MainCoordinator.swift */; };
+		F7BAAE0725BAE8FD00FE8CE4 /* SwipeBackNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BAAE0625BAE8FD00FE8CE4 /* SwipeBackNavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +65,8 @@
 		F766C8F725B8541C0046FFA5 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		F766C8FF25B864960046FFA5 /* PokemonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonModel.swift; sourceTree = "<group>"; };
 		F766C90425B867850046FFA5 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		F766C90925B990EB0046FFA5 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		F766C93525B9D7070046FFA5 /* PokemonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonType.swift; sourceTree = "<group>"; };
 		F76CC35C25B6C58100C2A551 /* Pokeapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokeapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F76CC35F25B6C58100C2A551 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F76CC36325B6C58100C2A551 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -75,6 +80,7 @@
 		F76CC38125B6C58300C2A551 /* PokeappUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeappUITests.swift; sourceTree = "<group>"; };
 		F76CC38325B6C58300C2A551 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F76CC3A025B6C96F00C2A551 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		F7BAAE0625BAE8FD00FE8CE4 /* SwipeBackNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeBackNavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,12 +111,11 @@
 		F766C85625B6DA070046FFA5 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				F766C8FF25B864960046FFA5 /* PokemonModel.swift */,
-				F766C8EF25B852CB0046FFA5 /* MainModel.swift */,
-				F766C8F725B8541C0046FFA5 /* MainViewModel.swift */,
-				F766C8E025B8453F0046FFA5 /* Views */,
 				F76CC3A025B6C96F00C2A551 /* MainCoordinator.swift */,
 				F766C8EA25B852860046FFA5 /* MainManager.swift */,
+				F766C90E25B991090046FFA5 /* Model */,
+				F766C90F25B991310046FFA5 /* ViewModel */,
+				F766C8E025B8453F0046FFA5 /* Views */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -118,8 +123,9 @@
 		F766C8A025B72D210046FFA5 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				F766C8DC25B844D00046FFA5 /* Views */,
 				F766C8A425B72D540046FFA5 /* DetailCoordinator.swift */,
+				F766C91025B9915D0046FFA5 /* ViewModel */,
+				F766C8DC25B844D00046FFA5 /* Views */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -161,6 +167,39 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		F766C90E25B991090046FFA5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F766C8FF25B864960046FFA5 /* PokemonModel.swift */,
+				F766C8EF25B852CB0046FFA5 /* MainModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F766C90F25B991310046FFA5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F766C8F725B8541C0046FFA5 /* MainViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F766C91025B9915D0046FFA5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F766C90925B990EB0046FFA5 /* DetailViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F766C93425B9D6F60046FFA5 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				F766C93525B9D7070046FFA5 /* PokemonType.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
 		F76CC35325B6C58100C2A551 = {
 			isa = PBXGroup;
 			children = (
@@ -184,15 +223,14 @@
 		F76CC35E25B6C58100C2A551 /* Pokeapp */ = {
 			isa = PBXGroup;
 			children = (
+				F7BAAE1525BAF22100FE8CE4 /* App */,
+				F7BAAE0E25BAE92300FE8CE4 /* API */,
+				F7BAAE0525BAE8D500FE8CE4 /* Utils */,
+				F766C93425B9D6F60046FFA5 /* Enum */,
 				F76CC35F25B6C58100C2A551 /* AppDelegate.swift */,
 				F76CC36825B6C58300C2A551 /* Assets.xcassets */,
 				F76CC36A25B6C58300C2A551 /* LaunchScreen.storyboard */,
 				F76CC36D25B6C58300C2A551 /* Info.plist */,
-				F766C85625B6DA070046FFA5 /* Main */,
-				F766C8A025B72D210046FFA5 /* Detail */,
-				F766C85A25B6DB5D0046FFA5 /* Colors.swift */,
-				F766C8E225B8481D0046FFA5 /* PokeAPI.swift */,
-				F766C90425B867850046FFA5 /* Extensions.swift */,
 			);
 			path = Pokeapp;
 			sourceTree = "<group>";
@@ -213,6 +251,33 @@
 				F76CC38325B6C58300C2A551 /* Info.plist */,
 			);
 			path = PokeappUITests;
+			sourceTree = "<group>";
+		};
+		F7BAAE0525BAE8D500FE8CE4 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				F766C85A25B6DB5D0046FFA5 /* Colors.swift */,
+				F766C90425B867850046FFA5 /* Extensions.swift */,
+				F7BAAE0625BAE8FD00FE8CE4 /* SwipeBackNavigationController.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		F7BAAE0E25BAE92300FE8CE4 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				F766C8E225B8481D0046FFA5 /* PokeAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		F7BAAE1525BAF22100FE8CE4 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				F766C85625B6DA070046FFA5 /* Main */,
+				F766C8A025B72D210046FFA5 /* Detail */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -357,6 +422,9 @@
 				F766C8B825B74DBD0046FFA5 /* StatTableViewCell.swift in Sources */,
 				F766C8EB25B852860046FFA5 /* MainManager.swift in Sources */,
 				F766C8CA25B8272B0046FFA5 /* TypeCollectionView.swift in Sources */,
+				F766C93625B9D7070046FFA5 /* PokemonType.swift in Sources */,
+				F766C90A25B990EB0046FFA5 /* DetailViewModel.swift in Sources */,
+				F7BAAE0725BAE8FD00FE8CE4 /* SwipeBackNavigationController.swift in Sources */,
 				F766C8F025B852CB0046FFA5 /* MainModel.swift in Sources */,
 				F766C90525B867850046FFA5 /* Extensions.swift in Sources */,
 				F76CC36025B6C58100C2A551 /* AppDelegate.swift in Sources */,

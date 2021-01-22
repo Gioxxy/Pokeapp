@@ -7,18 +7,19 @@
 
 import UIKit
 
-protocol MainViewControllerDelegate: class {
-    func fetchData(offset: Int, onSuccess: ((_ mainViewModel: MainViewModel)->Void)?, onError: (()->Void)?)
-    func onPokemonDidTap()
-}
 
 class MainViewController: UIViewController {
     
-    weak var delegate: MainViewControllerDelegate?
-    var mainViewModel: MainViewModel?
-    private var currentOffset: Int = 0
+    private var mainViewModel: MainViewModel?
+    private var initialOffset: Int = 0
     
-    let collectionView: UICollectionView = {
+    private let logo: UIImageView = {
+        let logo = UIImageView(image: UIImage(named: "pokeLogo"))
+        logo.contentMode = .scaleAspectFit
+        return logo
+    }()
+    
+    private let collectionView: UICollectionView = {
         let inset = UIScreen.main.bounds.width.truncatingRemainder(dividingBy: 173) / 2
         let flow = UICollectionViewFlowLayout()
         flow.scrollDirection = .vertical
@@ -36,27 +37,26 @@ class MainViewController: UIViewController {
         return collectionView
     }()
     
-    let logo: UIImageView = {
-        let logo = UIImageView(image: UIImage(named: "pokeLogo"))
-        logo.contentMode = .scaleAspectFit
-        return logo
-    }()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupView()
-        delegate?.fetchData(
-            offset: currentOffset,
-            onSuccess: { mainViewModel in
-                self.mainViewModel = mainViewModel
+    func config(mainViewModel: MainViewModel){
+        self.mainViewModel = mainViewModel
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        view.backgroundColor = UIColor.background
+        
+        addViews()
+        
+        mainViewModel.getPokemons(
+            offset: initialOffset,
+            onSuccess: {
                 self.collectionView.reloadData()
             },
-            onError: {}
+            onError: {
+                // TODO onError
+            }
         )
     }
     
-    func setupView(){
-        view.backgroundColor = UIColor.background
+    private func addViews(){
         let safeArea = view.safeAreaLayoutGuide
         
         // Pokeball
@@ -80,8 +80,6 @@ class MainViewController: UIViewController {
         ])
         
         // GridView
-        collectionView.dataSource = self
-        collectionView.delegate = self
         view.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -110,7 +108,9 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.onPokemonDidTap()
+        if let pokemon = mainViewModel?.pokemons[indexPath.row] {
+            mainViewModel?.onPokemonDidTap(pokemonViewModel: pokemon)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -119,23 +119,21 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if let mainViewModel = mainViewModel, mainViewModel.pokemons.count > 0, indexPath.row == mainViewModel.pokemons.count - 1 {
-            // TODO Request next data
-            delegate?.fetchData(
+            let pokemonCount = mainViewModel.pokemons.count
+            mainViewModel.getPokemons(
                 offset: mainViewModel.nextOffset ?? 0,
-                onSuccess: { mainViewModel in
-                    self.mainViewModel?.nextPageURL = mainViewModel.nextPageURL
-                    self.mainViewModel?.nextOffset = mainViewModel.nextOffset
-                    self.mainViewModel?.pokemons.append(contentsOf: mainViewModel.pokemons)
-                    
+                onSuccess: {
                     var paths = [IndexPath]()
-                    for i in 0..<mainViewModel.pokemons.count {
-                        paths.append(IndexPath(row: (self.mainViewModel?.pokemons.count ?? 0) + i, section: 0))
+                    for i in 0..<(mainViewModel.pokemons.count - pokemonCount) {
+                        paths.append(IndexPath(row: pokemonCount + i, section: 0))
                     }
                     self.collectionView.performBatchUpdates {
                         self.collectionView.insertItems(at: paths)
                     }
                 },
-                onError: {}
+                onError: {
+                    // TODO onError
+                }
             )
         }
     }
