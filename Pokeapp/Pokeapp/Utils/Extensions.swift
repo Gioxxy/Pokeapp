@@ -11,17 +11,33 @@ import UIKit
 extension UIImageView {
     func imageFromNetwork(url: URL?) {
         guard let url = url else { return }
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            guard
-                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
-                let data = data, error == nil,
-                let image = UIImage(data: data)
-                else { return }
+        let cache = URLCache(
+            memoryCapacity: 0,
+            diskCapacity: 100*1024*1024,
+            diskPath: "PokeImageCache"
+        )
+        if let data = cache.cachedResponse(for: URLRequest(url: url))?.data {
+            guard let image = UIImage(data: data) else { return }
             DispatchQueue.main.async() { [weak self] in
                 self?.image = image
             }
-        }.resume()
+        } else {
+            let sessionConfiguration = URLSessionConfiguration.default
+            sessionConfiguration.requestCachePolicy = .returnCacheDataElseLoad
+            sessionConfiguration.urlCache = cache
+            URLSession(configuration: sessionConfiguration).dataTask(with: url) { data, response, error in
+                guard
+                    let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                    let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                    let data = data, error == nil,
+                    let image = UIImage(data: data)
+                    else { return }
+                DispatchQueue.main.async() { [weak self] in
+                    cache.storeCachedResponse(CachedURLResponse(response: httpURLResponse, data: data), for: URLRequest(url: url))
+                    self?.image = image
+                }
+            }.resume()
+        }
     }
 }
 

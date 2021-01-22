@@ -8,6 +8,7 @@
 import Foundation
 
 class MainManager {
+        
     func getPokemons(offset: Int = 0, onSuccess: ((_ mainModel: MainModel)->Void)? = nil, onError: (()->Void)? = nil){
         PokeAPI.get(
             route: "/pokemon",
@@ -22,6 +23,9 @@ class MainManager {
                     print("error pokemons decode")
                     onError?()
                 }
+            },
+            onError: {
+                onError?()
             }
         )
     }
