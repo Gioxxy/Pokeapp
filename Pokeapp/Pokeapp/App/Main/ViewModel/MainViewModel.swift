@@ -18,23 +18,6 @@ class MainViewModel{
     var nextOffset: Int?
     var pokemons: [PokemonViewModel] = []
     
-    init(mainModel: MainModel, pokemons: [PokemonModel]) {
-        self.mainModel = mainModel
-        self.pokemonModels = pokemons
-        
-        self.nextPageURL = URL(string: mainModel.next ?? "")
-        if let urlComponents = URLComponents(string: mainModel.next ?? "") {
-            let queryItems: [URLQueryItem] = urlComponents.queryItems ??  []
-            self.nextOffset = Int(queryItems.first(where: { $0.name == "offset" })?.value ?? "")
-        }else{
-            self.nextOffset = nil
-        }
-        
-        self.pokemons = pokemons.map({ return PokemonViewModel(pokemon: $0) })
-    }
-    
-    init() {}
-    
     func onPokemonDidTap(pokemonViewModel: PokemonViewModel){
         if let pokemonModel = pokemonModels?.first(where: { pokemonViewModel.id == $0.id }) {
             coordinator?.onPokemonDidTap(pokemonModel: pokemonModel)
@@ -57,7 +40,7 @@ class MainViewModel{
                     self.nextOffset = nil
                 }
                 
-                self.pokemons.append(contentsOf: pokemons.map({ return PokemonViewModel(pokemon: $0) }))
+                self.pokemons.append(contentsOf: pokemons.map({ return PokemonViewModel(pokemonModel: $0) }))
                 onSuccess?()
             },
             onError: {
@@ -66,18 +49,4 @@ class MainViewModel{
         )
     }
     
-}
-
-class PokemonViewModel {
-    let id: Int
-    let name: String
-    let type: PokemonType
-    let imageURL: URL?
-    
-    init(pokemon: PokemonModel) {
-        id = pokemon.id
-        name = pokemon.name.capitalized.replacingOccurrences(of: "-", with: " - ")
-        imageURL = URL(string: (pokemon.sprites?.other?.officialArtwork?.frontDefault ?? pokemon.sprites?.frontDefault) ?? "")
-        type = PokemonType(rawValue: pokemon.types?.first?.type.name ?? "unknown") ?? PokemonType.unknown
-    }
 }

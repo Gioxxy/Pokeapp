@@ -36,6 +36,8 @@
 		F7BAAE2925BB140000FE8CE4 /* ImageViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BAAE2825BB140000FE8CE4 /* ImageViewerViewController.swift */; };
 		F7BAAE2E25BB18B100FE8CE4 /* PageViewCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BAAE2D25BB18B100FE8CE4 /* PageViewCollectionView.swift */; };
 		F7BAAE3325BB190A00FE8CE4 /* PageViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BAAE3225BB190A00FE8CE4 /* PageViewCollectionViewCell.swift */; };
+		F7BAAE4D25BC46E100FE8CE4 /* PokemonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BAAE4C25BC46E100FE8CE4 /* PokemonViewModel.swift */; };
+		F7BAAE5225BC471900FE8CE4 /* StatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BAAE5125BC471900FE8CE4 /* StatsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +93,8 @@
 		F7BAAE2825BB140000FE8CE4 /* ImageViewerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewerViewController.swift; sourceTree = "<group>"; };
 		F7BAAE2D25BB18B100FE8CE4 /* PageViewCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewCollectionView.swift; sourceTree = "<group>"; };
 		F7BAAE3225BB190A00FE8CE4 /* PageViewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewCollectionViewCell.swift; sourceTree = "<group>"; };
+		F7BAAE4C25BC46E100FE8CE4 /* PokemonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonViewModel.swift; sourceTree = "<group>"; };
+		F7BAAE5125BC471900FE8CE4 /* StatsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				F766C8F725B8541C0046FFA5 /* MainViewModel.swift */,
+				F7BAAE4C25BC46E100FE8CE4 /* PokemonViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -197,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				F766C90925B990EB0046FFA5 /* DetailViewModel.swift */,
+				F7BAAE5125BC471900FE8CE4 /* StatsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -470,6 +476,7 @@
 				F766C85B25B6DB5D0046FFA5 /* Colors.swift in Sources */,
 				F766C86B25B6DD330046FFA5 /* MainCollectionViewCell.swift in Sources */,
 				F766C8F825B8541C0046FFA5 /* MainViewModel.swift in Sources */,
+				F7BAAE4D25BC46E100FE8CE4 /* PokemonViewModel.swift in Sources */,
 				F766C8A525B72D540046FFA5 /* DetailCoordinator.swift in Sources */,
 				F766C90025B864960046FFA5 /* PokemonModel.swift in Sources */,
 				F7BAAE2425BB0E6C00FE8CE4 /* ImageViewerViewModel.swift in Sources */,
@@ -489,6 +496,7 @@
 				F766C90525B867850046FFA5 /* Extensions.swift in Sources */,
 				F76CC36025B6C58100C2A551 /* AppDelegate.swift in Sources */,
 				F766C8B325B72EE10046FFA5 /* DetailViewController.swift in Sources */,
+				F7BAAE5225BC471900FE8CE4 /* StatsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

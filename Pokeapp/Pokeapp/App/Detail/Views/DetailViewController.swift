@@ -67,7 +67,7 @@ final class DetailViewController: UIViewController {
         self.detailViewModel = detailViewModel
         view.backgroundColor = detailViewModel.type.color()
         titleLabel.text = detailViewModel.name
-        idLabel.text = detailViewModel.idString
+        idLabel.text = detailViewModel.namedId
         imageView.imageFromNetwork(url: detailViewModel.imageURL)
         typesCollectionView.config(types: detailViewModel.types)
         statsTableView.config(stats: detailViewModel.stats)
