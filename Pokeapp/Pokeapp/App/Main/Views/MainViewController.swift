@@ -26,19 +26,21 @@ class MainViewController: UIViewController {
         flow.minimumInteritemSpacing = 20
         flow.minimumLineSpacing = 20
         flow.itemSize = CGSize(width: 163, height: 163)
-        flow.sectionInset = UIEdgeInsets(top: 112, left: inset, bottom: 30, right: inset)
+        flow.sectionInset = UIEdgeInsets(top: 20, left: inset, bottom: 30, right: inset)
         
         let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: flow)
         collectionView.backgroundColor = UIColor.clear.withAlphaComponent(0)
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.register(MainCollectionViewCell.self, forCellWithReuseIdentifier: MainCollectionViewCell.cellId)
-        
+        collectionView.register(SearchBarCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SearchBarCell.cellId)
+
         return collectionView
     }()
     
     func config(mainViewModel: MainViewModel){
         self.mainViewModel = mainViewModel
+        dismissKeyboardWhenViewTapped()
         collectionView.dataSource = self
         collectionView.delegate = self
         view.backgroundColor = UIColor.background
@@ -87,7 +89,11 @@ class MainViewController: UIViewController {
             collectionView.bottomAnchor.constraint(greaterThanOrEqualTo: view.bottomAnchor),
             collectionView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
-            collectionView.contentLayoutGuide.widthAnchor.constraint(equalTo: safeArea.widthAnchor)
+            collectionView.contentLayoutGuide.widthAnchor.constraint(equalTo: safeArea.widthAnchor),
+            collectionView.contentLayoutGuide.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            collectionView.contentLayoutGuide.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            collectionView.contentLayoutGuide.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+            collectionView.contentLayoutGuide.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
         ])
     }
 
@@ -118,7 +124,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if let mainViewModel = mainViewModel, mainViewModel.pokemons.count > 0, indexPath.row == mainViewModel.pokemons.count - 1 {
+        if let mainViewModel = mainViewModel, !mainViewModel.isSearching, mainViewModel.pokemons.count > 0, indexPath.row == mainViewModel.pokemons.count - 1 {
             let pokemonCount = mainViewModel.pokemons.count
             mainViewModel.getPokemons(
                 offset: mainViewModel.nextOffset ?? 0,
@@ -149,5 +155,41 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             }
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: view.frame.width, height: 152)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SearchBarCell.cellId, for: indexPath) as! SearchBarCell
+        header.config(
+            onSearch: { text in
+                self.mainViewModel?.searchPokemon(
+                    name: text,
+                    onSuccess: {
+                        DispatchQueue.main.async {
+                            self.collectionView.reloadData()
+                        }
+                    },
+                    onError: {
+                        print("no pokemon named " + text)
+                    }
+                )
+            },
+            onEndSearch: {
+                self.mainViewModel?.endSearch(
+                    offset: self.initialOffset,
+                    onSuccess: {
+                        DispatchQueue.main.async {
+                            self.collectionView.reloadData()
+                        }
+                    },
+                    onError: {
+                        // TODO onError
+                    }
+                )
+            }
+        )
+        return header
+    }
 }
-

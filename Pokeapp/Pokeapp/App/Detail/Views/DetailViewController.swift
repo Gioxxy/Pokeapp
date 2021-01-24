@@ -60,6 +60,8 @@ final class DetailViewController: UIViewController {
         imageView.layer.shadowOpacity = 0.2
         imageView.layer.masksToBounds = false
         imageView.isUserInteractionEnabled = true
+        imageView.layer.shouldRasterize = true
+        imageView.layer.rasterizationScale = UIScreen.main.scale
         return imageView
     }()
     

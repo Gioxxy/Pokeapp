@@ -38,6 +38,7 @@
 		F7BAAE3325BB190A00FE8CE4 /* PageViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BAAE3225BB190A00FE8CE4 /* PageViewCollectionViewCell.swift */; };
 		F7BAAE4D25BC46E100FE8CE4 /* PokemonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BAAE4C25BC46E100FE8CE4 /* PokemonViewModel.swift */; };
 		F7BAAE5225BC471900FE8CE4 /* StatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BAAE5125BC471900FE8CE4 /* StatsViewModel.swift */; };
+		F7BAAE6525BD8DD300FE8CE4 /* SearchBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BAAE6425BD8DD300FE8CE4 /* SearchBarCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,7 @@
 		F7BAAE3225BB190A00FE8CE4 /* PageViewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewCollectionViewCell.swift; sourceTree = "<group>"; };
 		F7BAAE4C25BC46E100FE8CE4 /* PokemonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonViewModel.swift; sourceTree = "<group>"; };
 		F7BAAE5125BC471900FE8CE4 /* StatsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewModel.swift; sourceTree = "<group>"; };
+		F7BAAE6425BD8DD300FE8CE4 /* SearchBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +179,7 @@
 			children = (
 				F76CC36325B6C58100C2A551 /* MainViewController.swift */,
 				F766C86A25B6DD330046FFA5 /* MainCollectionViewCell.swift */,
+				F7BAAE6425BD8DD300FE8CE4 /* SearchBarCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -491,6 +494,7 @@
 				F766C93625B9D7070046FFA5 /* PokemonType.swift in Sources */,
 				F766C90A25B990EB0046FFA5 /* DetailViewModel.swift in Sources */,
 				F7BAAE0725BAE8FD00FE8CE4 /* SwipeBackNavigationController.swift in Sources */,
+				F7BAAE6525BD8DD300FE8CE4 /* SearchBarCell.swift in Sources */,
 				F766C8F025B852CB0046FFA5 /* MainModel.swift in Sources */,
 				F7BAAE1C25BB0E0800FE8CE4 /* ImageViewerCoordinator.swift in Sources */,
 				F766C90525B867850046FFA5 /* Extensions.swift in Sources */,

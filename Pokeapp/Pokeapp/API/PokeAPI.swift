@@ -38,11 +38,21 @@ class PokeAPI {
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.cachePolicy = .useProtocolCachePolicy
         
-        if let data = cache.cachedResponse(for: request)?.data {
+        if let data = cache.cachedResponse(for: request)?.data, let response = cache.cachedResponse(for: request)?.response {
+            guard let response = response as? HTTPURLResponse else {
+                print("Not a HTTP response")
+                onError?()
+                return
+            }
+            guard response.statusCode == 200 else {
+                print("Invalid HTTP status code \(response.statusCode)")
+                onError?()
+                return
+            }
             onSuccess?(data)
         } else {
             createAndRetrieveURLSession().dataTask(with: request, completionHandler: { data, response, error -> Void in
-    //            print("RES " + url.absoluteString)
+                print(String((response as? HTTPURLResponse)?.statusCode ?? 0))
                 if let error = error {
                     print("Network error: " + error.localizedDescription)
                     onError?()

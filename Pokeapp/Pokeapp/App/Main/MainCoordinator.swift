@@ -53,6 +53,14 @@ class MainCoordinator {
         )
     }
     
+    func searchPokemon(name: String, onSuccess: ((PokemonModel)->Void)?, onError: (()->Void)?){
+        manager.getPokemon(
+            name: name,
+            onSuccess: onSuccess,
+            onError: onError
+        )
+    }
+    
     func onPokemonDidTap(pokemonModel: PokemonModel){
         DetailCoordinator(navigationController: navigationController, pokemonModel: pokemonModel).start()
     }

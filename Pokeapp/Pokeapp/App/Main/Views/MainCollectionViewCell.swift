@@ -24,6 +24,8 @@ final class MainCollectionViewCell: UICollectionViewCell {
         image.layer.shadowRadius = 3
         image.layer.shadowOpacity = 0.2
         image.layer.masksToBounds = false
+        image.layer.shouldRasterize = true
+        image.layer.rasterizationScale = UIScreen.main.scale
         return image
     }()
     

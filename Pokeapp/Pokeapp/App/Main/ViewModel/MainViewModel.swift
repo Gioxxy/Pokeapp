@@ -17,6 +17,7 @@ class MainViewModel{
     var nextPageURL: URL?
     var nextOffset: Int?
     var pokemons: [PokemonViewModel] = []
+    var isSearching: Bool = false
     
     func onPokemonDidTap(pokemonViewModel: PokemonViewModel){
         if let pokemonModel = pokemonModels?.first(where: { pokemonViewModel.id == $0.id }) {
@@ -47,6 +48,31 @@ class MainViewModel{
                 onError?()
             }
         )
+    }
+    
+    func searchPokemon(name: String, onSuccess: (()->Void)?, onError: (()->Void)?){
+        coordinator?.searchPokemon(
+            name: name.lowercased(),
+            onSuccess: { pokemon in
+                self.isSearching = true
+                self.mainModel = nil
+                self.pokemonModels = [pokemon]
+                self.nextPageURL = nil
+                self.nextOffset = nil
+                self.pokemons = [PokemonViewModel(pokemonModel: pokemon)]
+                onSuccess?()
+            },
+            onError: {
+                onError?()
+            }
+        )
+    }
+    
+    func endSearch(offset: Int, onSuccess: (()->Void)?, onError: (()->Void)?){
+        isSearching = false
+        pokemonModels = []
+        pokemons = []
+        getPokemons(offset: offset, onSuccess: onSuccess, onError: onError)
     }
     
 }
