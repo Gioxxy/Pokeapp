@@ -147,6 +147,8 @@ class PokeappTests: XCTestCase {
         XCTAssertEqual(detailViewModel.name, "Bulbasaur")
         XCTAssertEqual(detailViewModel.type, PokemonType.grass)
         XCTAssertEqual(detailViewModel.imageURL, URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"))
+        XCTAssertEqual(detailViewModel.weight, "6.9 Kg")
+        XCTAssertEqual(detailViewModel.height, "0.7 m")
         XCTAssertEqual(
             detailViewModel.stats,
             [

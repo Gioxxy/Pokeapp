@@ -15,7 +15,7 @@ final class StatsTableView: UITableViewController {
         tableView.register(StatTableViewCell.self, forCellReuseIdentifier: StatTableViewCell.cellId)
         tableView.showsVerticalScrollIndicator = false
         tableView.showsHorizontalScrollIndicator = false
-        tableView.backgroundColor = UIColor.clear.withAlphaComponent(0)
+        tableView.backgroundColor = UIColor.white
         tableView.separatorStyle = .none
         tableView.allowsSelection = false
         tableView.bounces = false

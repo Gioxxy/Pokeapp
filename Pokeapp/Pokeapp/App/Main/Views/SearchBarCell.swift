@@ -15,7 +15,8 @@ class SearchBarCell: UICollectionReusableView, UISearchBarDelegate {
         searchBar.placeholder = "Search"
         searchBar.tintColor = .black
 //        searchBar.backgroundColor = #colorLiteral(red: 0.9175556302, green: 0.9110012054, blue: 0.9225750566, alpha: 1)
-        searchBar.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        searchBar.backgroundColor = .white
+        searchBar.tintColor = .black
         return searchBar
     }()
     
@@ -35,17 +36,22 @@ class SearchBarCell: UICollectionReusableView, UISearchBarDelegate {
         setupShadow()
         
         searchBar.translatesAutoresizingMaskIntoConstraints = false
-        let inset = UIScreen.main.bounds.width.truncatingRemainder(dividingBy: 173) / 2
+        var inset = UIScreen.main.bounds.width.truncatingRemainder(dividingBy: 173)
+        if inset >= 70 { inset = 70 }
         
         NSLayoutConstraint.activate([
-            searchBar.leftAnchor.constraint(equalTo: self.leftAnchor, constant: inset),
-            searchBar.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -inset),
             searchBar.topAnchor.constraint(equalTo: self.topAnchor, constant: 112),
-            searchBar.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            searchBar.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            searchBar.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            searchBar.widthAnchor.constraint(equalTo: self.widthAnchor, constant: -inset)
         ])
     }
     
     func setupShadow(){
+        if #available(iOS 13, *) {} else {
+            searchBar.layer.borderWidth = 10
+            searchBar.layer.borderColor = #colorLiteral(red: 0.9490041137, green: 0.948971808, blue: 0.9532201886, alpha: 1)
+        }
         searchBar.layer.cornerRadius = 10
         searchBar.layer.shadowColor = UIColor.black.cgColor
         searchBar.layer.shadowOffset = CGSize(width: 0, height: 2.0)

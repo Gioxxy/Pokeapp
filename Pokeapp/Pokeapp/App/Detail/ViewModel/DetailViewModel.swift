@@ -21,6 +21,8 @@ final class DetailViewModel {
     let namedId: String
     let type: PokemonType
     let imageURL: URL?
+    let weight: String
+    let height: String
     let stats: [StatsViewModel]
     let types: [PokemonType]
     
@@ -31,6 +33,8 @@ final class DetailViewModel {
         namedId = String(format: "#%03d", pokemonModel.id)
         type = PokemonType(rawValue: pokemonModel.types?.first?.type.name ?? "unknown") ?? PokemonType.unknown
         imageURL = URL(string: (pokemonModel.sprites?.other?.officialArtwork?.frontDefault ?? pokemonModel.sprites?.frontDefault) ?? "")
+        weight = String(Float(pokemonModel.weight ?? 0) / 10) + " Kg"
+        height = String(Float(pokemonModel.height ?? 0) / 10) + " m"
         stats = pokemonModel.stats?.map({ StatsViewModel(stats: $0) }) ?? []
         types = pokemonModel.types?.map({ PokemonType(rawValue: $0.type.name) ?? PokemonType.unknown }) ?? []
         

@@ -21,12 +21,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         coordinator?.start()
         
         window = UIWindow(frame: UIScreen.main.bounds)
+        if #available(iOS 13.0, *) {
+            window?.overrideUserInterfaceStyle = .light
+        }
         window?.rootViewController = navController
         window?.makeKeyAndVisible()
         
         return true
     }
-
-
 }
 

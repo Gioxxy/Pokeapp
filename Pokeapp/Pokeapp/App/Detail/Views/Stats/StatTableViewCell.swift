@@ -39,6 +39,8 @@ final class StatTableViewCell: UITableViewCell {
         value.text = String(stat.value)
         progress.setProgress(stat.progressValue, animated: false)
         
+        contentView.backgroundColor = .white
+        
         addViews()
     }
     

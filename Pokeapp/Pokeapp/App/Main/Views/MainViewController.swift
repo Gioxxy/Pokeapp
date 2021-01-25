@@ -119,10 +119,6 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: 163, height: 163)
-    }
-    
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if let mainViewModel = mainViewModel, !mainViewModel.isSearching, mainViewModel.pokemons.count > 0, indexPath.row == mainViewModel.pokemons.count - 1 {
             let pokemonCount = mainViewModel.pokemons.count
@@ -164,9 +160,11 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SearchBarCell.cellId, for: indexPath) as! SearchBarCell
         header.config(
             onSearch: { text in
+                print("Search " + text)
                 self.mainViewModel?.searchPokemon(
                     name: text,
                     onSuccess: {
+                        print("success")
                         DispatchQueue.main.async {
                             self.collectionView.reloadData()
                         }

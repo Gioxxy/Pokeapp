@@ -16,13 +16,6 @@ class PokeAPI {
         diskPath: "PokeAPICache"
     )
     
-    private static func createAndRetrieveURLSession() -> URLSession {
-        let sessionConfiguration = URLSessionConfiguration.default
-        sessionConfiguration.requestCachePolicy = .returnCacheDataElseLoad
-        sessionConfiguration.urlCache = cache
-        return URLSession(configuration: sessionConfiguration)
-    }
-    
     static func get(route: String, params: Dictionary<String, String>? = nil, onSuccess: ((_ data: Data)->Void)? = nil, onError: (()->Void)? = nil){
         
         guard route.count > 0 else { onError?(); return }
@@ -51,8 +44,10 @@ class PokeAPI {
             }
             onSuccess?(data)
         } else {
-            createAndRetrieveURLSession().dataTask(with: request, completionHandler: { data, response, error -> Void in
-                print(String((response as? HTTPURLResponse)?.statusCode ?? 0))
+            let sessionConfiguration = URLSessionConfiguration.default
+            sessionConfiguration.requestCachePolicy = .returnCacheDataElseLoad
+            sessionConfiguration.urlCache = cache
+            URLSession(configuration: sessionConfiguration).dataTask(with: request, completionHandler: { data, response, error -> Void in
                 if let error = error {
                     print("Network error: " + error.localizedDescription)
                     onError?()

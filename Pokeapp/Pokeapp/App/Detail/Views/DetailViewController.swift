@@ -65,11 +65,29 @@ final class DetailViewController: UIViewController {
         return imageView
     }()
     
+    private let weightLabel: UILabel = {
+        let weightLabel = UILabel()
+        weightLabel.textColor = UIColor.gray
+        weightLabel.font = UIFont(name: "AvenirNext-Bold", size: 18)
+        weightLabel.textAlignment = .left
+        return weightLabel
+    }()
+    
+    private let heightLabel: UILabel = {
+        let heightLabel = UILabel()
+        heightLabel.textColor = UIColor.gray
+        heightLabel.font = UIFont(name: "AvenirNext-Bold", size: 18)
+        heightLabel.textAlignment = .right
+        return heightLabel
+    }()
+    
     func config(detailViewModel: DetailViewModel) {
         self.detailViewModel = detailViewModel
         view.backgroundColor = detailViewModel.type.color()
         titleLabel.text = detailViewModel.name
         idLabel.text = detailViewModel.namedId
+        weightLabel.text = detailViewModel.weight
+        heightLabel.text = detailViewModel.height
         imageView.imageFromNetwork(url: detailViewModel.imageURL)
         typesCollectionView.config(types: detailViewModel.types)
         statsTableView.config(stats: detailViewModel.stats)
@@ -140,6 +158,22 @@ final class DetailViewController: UIViewController {
             imageView.widthAnchor.constraint(lessThanOrEqualToConstant: 400)
         ])
         
+        // Add weight
+        view.addSubview(weightLabel)
+        weightLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            weightLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 5),
+            weightLabel.trailingAnchor.constraint(equalTo: containerView.centerXAnchor, constant: -30)
+        ])
+        
+        // Add height
+        view.addSubview(heightLabel)
+        heightLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            heightLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 5),
+            heightLabel.leadingAnchor.constraint(equalTo: containerView.centerXAnchor, constant: 30)
+        ])
+        
         // Add types
         containerView.addSubview(typesCollectionView.collectionView)
         typesCollectionView.collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -154,7 +188,7 @@ final class DetailViewController: UIViewController {
         containerView.addSubview(statsTableView.tableView)
         statsTableView.tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            statsTableView.tableView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10),
+            statsTableView.tableView.topAnchor.constraint(equalTo: weightLabel.bottomAnchor, constant: 10),
             statsTableView.tableView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             statsTableView.tableView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
             statsTableView.tableView.bottomAnchor.constraint(equalTo: typesCollectionView.collectionView.topAnchor)
