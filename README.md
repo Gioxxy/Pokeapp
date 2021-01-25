@@ -22,7 +22,7 @@ Pokeapp use the [PokéAPI](https://pokeapi.co/) v2.
 </p>
 
 ## APP Mockup
-In the project root you can find the Adobe XD mockup project, created before developing the app to have a guideline.
+In the project root you can find the Adobe XD [mockup](./Pokeapp.xd) project, created before developing the app to have a guideline.
 ## External libraries
 No external library were used, this because I decided to take it as a challenge to improve my skills and better explore some aspects such as caching requests and images.
 ## APP Flow
