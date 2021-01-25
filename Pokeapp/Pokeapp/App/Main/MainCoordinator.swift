@@ -48,7 +48,7 @@ class MainCoordinator {
                 }
             },
             onError: {
-                
+                onError?()
             }
         )
     }
