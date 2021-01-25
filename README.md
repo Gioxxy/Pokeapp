@@ -23,11 +23,11 @@ Pokeapp use the [PokéAPI](https://pokeapi.co/) v2.
 
 ## APP Mockup
 In the project root you can find the Adobe XD [mockup](./Pokeapp.xd) project, created before developing the app to have a guideline.
-## External libraries
-No external library were used, this because I decided to take it as a challenge to improve my skills and better explore some aspects such as caching requests and images.
 ## APP Flow
 Pokeapp start showing the first 20 Pokemon sorted by id. By scrolling down the app will fetch and show 20 new Pokemon every time. When users tap on a Pokemon the app shows his details (name, id, image, weight, height, stats and types) and if they tap on the image an image viewer will open showing all the Pokemon images.
 User can also search a Pokemon by typing his name or id in the search bar.
+## External libraries
+No external library were used, this because I decided to take it as a challenge to improve my skills and better explore some aspects such as caching requests and images.
 ## Caching
 API requests and images are cached using [URLCache](https://developer.apple.com/documentation/foundation/urlcache), so the app works even offline with cached data.
 ## Unit Tests
